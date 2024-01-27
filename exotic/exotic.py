@@ -1904,12 +1904,14 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         # check for Nans + Zeros
         for k in pDict:
             print (k)
-            print (pDict[k])
+            print (pDict[k])            
+            
             if k == 'rprs' and (pDict[k] == 0 or np.isnan(pDict[k])):
                 log_info(f"Error: {k} value is 0 or NaN. Please use a non-zero value in inits.json", error=True)
                 pDict[k] = 0.8 # instead of 1 since priors on RpRs are 0 to RpRs*1.25
                 log_info("EXOTIC will override the Rp/Rs value.")
             if "Unc" in k:
+                pDict[k]=float(pDict[k])
                 if not pDict[k]:
                     log_info(f"Warning: {k} uncertainty is 0. Please use a non-zero value in inits.json", warn=True)
                     pDict[k] = 1
