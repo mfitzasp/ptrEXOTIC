@@ -1696,6 +1696,8 @@ def parse_args():
 #import exotic.exotic
 #exotic.exotic.main(prereduced=True)
 
+#/home/studio-lab-user/sagemaker-studiolab-notebooks/tristanpsx/outputcats/V1_diffEXOTIC.csv
+
 def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False):
     # command line args
     #args = parse_args()
