@@ -1695,7 +1695,7 @@ def parse_args():
 
 def main():
     # command line args
-    args = parse_args()
+    #args = parse_args()
 
     log.debug("*************************")
     log.debug("EXOTIC reduction log file")
