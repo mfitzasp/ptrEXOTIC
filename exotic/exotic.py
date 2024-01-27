@@ -1696,7 +1696,7 @@ def parse_args():
 #import exotic.exotic
 #exotic.exotic.main(prereduced=True)
 
-def main(realtime=False, reduce=False,prereduced=False, photometry=False, nasaexoarch=False, override=False):
+def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False):
     # command line args
     #args = parse_args()
 
@@ -1727,10 +1727,12 @@ def main(realtime=False, reduce=False,prereduced=False, photometry=False, nasaex
                  'teffUncPos': None, 'teffUncNeg': None, 'met': None, 'metUncPos': None, 'metUncNeg': None,
                  'logg': None, 'loggUncPos': None, 'loggUncNeg': None}
 
+    breakpoint()
+
     # ---USER INPUTS--------------------------------------------------------------------------
-    if isinstance(realtime, str):
+    if realtime:
         reduction_opt = 1
-    elif isinstance(reduce, str) or isinstance(prereduced, str) or isinstance(photometry, str):
+    elif reduce or prereduced or photometry:
         reduction_opt = 2
     else:
         reduction_opt = user_input("\nPlease select Reduction method:"
@@ -1791,13 +1793,13 @@ def main(realtime=False, reduce=False,prereduced=False, photometry=False, nasaex
         demosaic_fmt = None
         demosaic_out = None
 
-        if isinstance(reduce, str):
+        if reduce:
             fitsortext = 1
             init_path = reduce
-        elif isinstance(prereduced, str):
+        elif prereduced:
             fitsortext = 2
             init_path = prereduced
-        elif isinstance(photometry, str):
+        elif photometry:
             fitsortext = 1
             init_path = photometry
         else:
