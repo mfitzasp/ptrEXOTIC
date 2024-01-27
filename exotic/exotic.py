@@ -1832,13 +1832,14 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         else:
             pDict = userpDict
             CandidatePlanetBool = False
-        # Seed random number generator (for run to run consistency)
-        if exotic_infoDict['random_seed']:
-            log_info(f"Setting random number seed to {exotic_infoDict['random_seed']}")
-        else:
-            exotic_infoDict['random_seed'] = int.from_bytes(hashlib.sha256(f"{pDict['pName']}:{pDict['midT']}".encode()).digest()[0:4], byteorder='little')
-            log_info(f"Generated random number seed {exotic_infoDict['random_seed']}")
-        np.random.seed(exotic_infoDict['random_seed'])
+        # # Seed random number generator (for run to run consistency)
+        # if exotic_infoDict['random_seed']:
+        #     log_info(f"Setting random number seed to {exotic_infoDict['random_seed']}")
+        # else:
+        #     exotic_infoDict['random_seed'] = int.from_bytes(hashlib.sha256(f"{pDict['pName']}:{pDict['midT']}".encode()).digest()[0:4], byteorder='little')
+        #     log_info(f"Generated random number seed {exotic_infoDict['random_seed']}")
+        # np.random.seed(exotic_infoDict['random_seed'])
+        np.random.seed()
 
         if fitsortext == 1:
             # Only do the dark correction if user selects this option
