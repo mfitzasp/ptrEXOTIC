@@ -1692,17 +1692,21 @@ def parse_args():
                              "Do not combine with the -ov, --override argument.")
     return parser.parse_args()
 
+#!pip install git+https://github.com/mfitzasp/ptrEXOTIC@main
+#import exotic.exotic
+#exotic.exotic.main(prereduced=True)
 
-def main():
+def main(realtime=False, reduce=False,prereduced=False, photometry=False, nasaexoarch=False, override=False):
     # command line args
     #args = parse_args()
+
 
     log.debug("*************************")
     log.debug("EXOTIC reduction log file")
     log.debug("*************************")
     log.debug("Starting ...")
     log.debug("")
-    log.debug(f"Python Version: {sys.version}")
+    #log.debug(f"Python Version: {sys.version}")
 
     log_info("\n*************************************************************")
     log_info("Welcome to the EXOplanet Transit Interpretation Code (EXOTIC)")
@@ -1724,9 +1728,9 @@ def main():
                  'logg': None, 'loggUncPos': None, 'loggUncNeg': None}
 
     # ---USER INPUTS--------------------------------------------------------------------------
-    if isinstance(args.realtime, str):
+    if isinstance(realtime, str):
         reduction_opt = 1
-    elif isinstance(args.reduce, str) or isinstance(args.prereduced, str) or isinstance(args.photometry, str):
+    elif isinstance(reduce, str) or isinstance(prereduced, str) or isinstance(photometry, str):
         reduction_opt = 2
     else:
         reduction_opt = user_input("\nPlease select Reduction method:"
@@ -1734,7 +1738,7 @@ def main():
                                    "\n\t2: Complete Reduction (for analyzing your data after an observing run)"
                                    "\nEnter 1 or 2: ", type_=int, values=[1, 2])
 
-    if not (args.reduce or args.prereduced or args.realtime or args.photometry):
+    if not (reduce or prereduced or realtime or photometry):
         file_cmd_opt = user_input("\nPlease select how to input your initial parameters:"
                                   "\n\t1: Command Line"
                                   "\n\t2: Input File (inits.json)"
@@ -1755,7 +1759,7 @@ def main():
         inputs_obj = Inputs(init_opt=init_opt)
 
         if init_opt == 'y':
-            init_path, userpDict = inputs_obj.search_init(args.realtime, userpDict)
+            init_path, userpDict = inputs_obj.search_init(realtime, userpDict)
 
         exotic_infoDict, userpDict['pName'] = inputs_obj.real_time(userpDict['pName'])
 
@@ -1787,15 +1791,15 @@ def main():
         demosaic_fmt = None
         demosaic_out = None
 
-        if isinstance(args.reduce, str):
+        if isinstance(reduce, str):
             fitsortext = 1
-            init_path = args.reduce
-        elif isinstance(args.prereduced, str):
+            init_path = reduce
+        elif isinstance(prereduced, str):
             fitsortext = 2
-            init_path = args.prereduced
-        elif isinstance(args.photometry, str):
+            init_path = prereduced
+        elif isinstance(photometry, str):
             fitsortext = 1
-            init_path = args.photometry
+            init_path = photometry
         else:
             fitsortext = user_input("\nPlease select method:"
                                     "\n\t1: Perform Aperture Photometry on FITS files"
@@ -1820,7 +1824,7 @@ def main():
         # Make a temp directory of helpful files
         Path(Path(exotic_infoDict['save']) / "temp").mkdir(exist_ok=True)
 
-        if not args.override:
+        if not override:
             nea_obj = NASAExoplanetArchive(planet=userpDict['pName'])
             userpDict['pName'], CandidatePlanetBool, pDict = nea_obj.planet_info()
         else:
@@ -1872,9 +1876,9 @@ def main():
             demosaic_mult = calculate_demosaic_mult(demosaic_out)   
 
         if file_cmd_opt == 2:
-            if args.nasaexoarch:
+            if nasaexoarch:
                 pass
-            elif args.override:
+            elif override:
                 if type(pDict['ra']) and type(pDict['dec']) is str:
                     pDict['ra'], pDict['dec'] = radec_hours_to_degree(pDict['ra'], pDict['dec'])
             else:
@@ -2494,7 +2498,7 @@ def main():
         # for k in myfit.bounds.keys():
         #     print(f"{myfit.parameters[k]:.6f} +- {myfit.errors[k]}")
 
-        if args.photometry:
+        if photometry:
             log_info("\nPhotometric Extraction Complete.")
             return
 
