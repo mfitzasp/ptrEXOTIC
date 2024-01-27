@@ -1903,8 +1903,8 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
 
         # check for Nans + Zeros
         for k in pDict:
-            print (k)
-            print (pDict[k])            
+            #print (k)
+            #print (pDict[k])            
             
             if k == 'rprs' and (pDict[k] == 0 or np.isnan(pDict[k])):
                 log_info(f"Error: {k} value is 0 or NaN. Please use a non-zero value in inits.json", error=True)
@@ -2478,7 +2478,8 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         else:
             goodTimes, goodFluxes, goodNormUnc, goodAirmasses = [], [], [], []
             bestCompStar, comp_coords = None, None
-            ld, ld0, ld1, ld2, ld3 = get_ld_values(pDict, exotic_infoDict)
+            #ld, ld0, ld1, ld2, ld3 = get_ld_values(pDict, exotic_infoDict)
+            ld, ld0, ld1, ld2, ld3 = 0,0,0,0,0
 
             with exotic_infoDict['prered_file'].open('r') as f:
                 for processed_data in f:
