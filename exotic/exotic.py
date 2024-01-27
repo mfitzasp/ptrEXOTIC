@@ -1727,7 +1727,7 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
                  'teffUncPos': None, 'teffUncNeg': None, 'met': None, 'metUncPos': None, 'metUncNeg': None,
                  'logg': None, 'loggUncPos': None, 'loggUncNeg': None}
 
-    breakpoint()
+    
 
     # ---USER INPUTS--------------------------------------------------------------------------
     if realtime:
