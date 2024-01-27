@@ -130,9 +130,21 @@ class Inputs:
 
                     init_file = user_input("\nPlease enter the Directory and Filename of "
                                            "your Initialization File: ", type_=str)
-                if init_file == 'ok':
-                    init_file = '/Users/rzellem/Documents/EXOTIC/inits.json'
-                init_file = Path(init_file)
+                # if init_file == 'ok':
+                #     init_file = '/Users/rzellem/Documents/EXOTIC/inits.json'
+                try:
+                    print ("First Try: " + str(init_file))
+                    init_file = Path(init_file)
+                except:
+                    print ("Second Try")
+                    log_info(f"\nYour current working directory is: {cwd}")
+                    log_info(f"Potential initialization files I've found in {cwd} are: ")
+                    [log_info(f"\t{file}") for file in cwd.glob('*.json') if file.is_file()]
+
+                    init_file = user_input("\nPlease enter the Directory and Filename of "
+                                           "your Initialization File: ", type_=str)
+                    init_file = Path(init_file)
+                    
                 planet_params = self.comp_params(init_file, planet_dict)
                 return init_file, planet_params
             except (FileNotFoundError, IsADirectoryError) as e:
