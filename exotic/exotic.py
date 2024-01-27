@@ -2478,8 +2478,7 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         else:
             goodTimes, goodFluxes, goodNormUnc, goodAirmasses = [], [], [], []
             bestCompStar, comp_coords = None, None
-            #ld, ld0, ld1, ld2, ld3 = get_ld_values(pDict, exotic_infoDict)
-            ld, ld0, ld1, ld2, ld3 = 0,0,0,0,0
+            ld, ld0, ld1, ld2, ld3 = get_ld_values(pDict, exotic_infoDict)
 
             with exotic_infoDict['prered_file'].open('r') as f:
                 for processed_data in f:
