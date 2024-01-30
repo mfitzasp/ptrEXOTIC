@@ -93,7 +93,7 @@ def createldgrid(minmu, maxmu, orbp,
         filters = [ldtk.BoxcarFilter(str(mue), mun, mux)
                    for mue, mun, mux in zip(munm, munmmin, munmmax)]
         sc = ldtk.LDPSetCreator(teff=(tstar, terr), logg=(loggstar, loggerr),
-                           z=(fehstar, feherr), filters=filters, offline_mode=True)
+                           z=(fehstar, feherr), filters=filters, offline_mode=True, cache='/home/studio-lab-user/ldtables')
         ps = sc.create_profiles(nsamples=int(1e4))
         itpfail = False
         for testprof in ps.profile_averages:
