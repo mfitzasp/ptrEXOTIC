@@ -1698,7 +1698,7 @@ def parse_args():
 
 #/home/studio-lab-user/sagemaker-studiolab-notebooks/tristanpsx/outputcats/V1_diffEXOTIC.csv
 
-def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False, prereduced_filename=False):
+def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False, prereduced_filename=False, inits_filename=False):
     # command line args
     #args = parse_args()
 
@@ -1818,7 +1818,7 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         inputs_obj = Inputs(init_opt=init_opt)
 
         if init_opt == 'y':
-            init_path, userpDict = inputs_obj.search_init(init_path, userpDict)
+            init_path, userpDict = inputs_obj.search_init(init_path, userpDict, inits_filename=inits_filename)
 
         if fitsortext == 1:
             exotic_infoDict, userpDict['pName'] = inputs_obj.complete_red(userpDict['pName'])

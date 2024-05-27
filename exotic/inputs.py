@@ -118,8 +118,13 @@ class Inputs:
 
         return self.info_dict, planet
 
-    def search_init(self, init_file, planet_dict):
+    def search_init(self, init_file, planet_dict, inits_filename):
         cwd = Path.cwd()
+        
+        if inits_filename:
+            print ("inits filename is not false")
+            print (inits_filename)
+            init_file = Path(inits_filename)
 
         while True:
             try:
