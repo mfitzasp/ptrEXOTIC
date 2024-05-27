@@ -83,9 +83,18 @@ class Inputs:
     def prereduced(self, planet, prereduced_filename):
         rem_list = ['images', 'plate_opt', 'tar_coords', 'comp_stars']
         [self.params.pop(key) for key in rem_list]
+        
+        comp_star = {
+            'ra': '',
+            'dec': '',
+            'x':  '',
+            'y': ''
+        }
 
+        # self.params.update({'exposure': exposure, 'file_units': data_file_units, 'file_time': data_file_time,
+        #                     'phot_comp_star': phot_comp_star})
         self.params.update({'exposure': exposure, 'file_units': data_file_units, 'file_time': data_file_time,
-                            'phot_comp_star': phot_comp_star})
+                            'phot_comp_star': comp_star})
         self.info_dict['prered_file'] = prereduced_file(self.info_dict['prered_file'], prereduced_filename)
 
         if not planet:
