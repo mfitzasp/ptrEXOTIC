@@ -1698,7 +1698,7 @@ def parse_args():
 
 #/home/studio-lab-user/sagemaker-studiolab-notebooks/tristanpsx/outputcats/V1_diffEXOTIC.csv
 
-def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False):
+def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False, prereduced_filename=False):
     # command line args
     #args = parse_args()
 
@@ -1823,7 +1823,7 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         if fitsortext == 1:
             exotic_infoDict, userpDict['pName'] = inputs_obj.complete_red(userpDict['pName'])
         else:
-            exotic_infoDict, userpDict['pName'] = inputs_obj.prereduced(userpDict['pName'])
+            exotic_infoDict, userpDict['pName'] = inputs_obj.prereduced(userpDict['pName'],prereduced_filename)
 
         # Make a temp directory of helpful files
         Path(Path(exotic_infoDict['save']) / "temp").mkdir(exist_ok=True)

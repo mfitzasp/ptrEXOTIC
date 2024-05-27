@@ -80,13 +80,13 @@ class Inputs:
 
         return self.info_dict, planet
 
-    def prereduced(self, planet):
+    def prereduced(self, planet, prereduced_filename):
         rem_list = ['images', 'plate_opt', 'tar_coords', 'comp_stars']
         [self.params.pop(key) for key in rem_list]
 
         self.params.update({'exposure': exposure, 'file_units': data_file_units, 'file_time': data_file_time,
                             'phot_comp_star': phot_comp_star})
-        self.info_dict['prered_file'] = prereduced_file(self.info_dict['prered_file'])
+        self.info_dict['prered_file'] = prereduced_file(self.info_dict['prered_file'], prereduced_filename)
 
         if not planet:
             planet = planet_name(planet)
@@ -553,8 +553,13 @@ def exposure(exp):
     return exp
 
 
-def prereduced_file(file):
+def prereduced_file(file, prereduced_filename):
     while True:
+        
+        if prereduced_filename:
+            print ("prereduced_filename is not false")
+            file = prereduced_filename            
+        
         try:
             if not file:
                 file = user_input("Enter the path and file name of your data file: ", type_=str)
