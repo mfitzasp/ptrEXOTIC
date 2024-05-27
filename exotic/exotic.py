@@ -554,6 +554,7 @@ def check_all_standard_filters(ld, observed_filter):
 
 def custom_range(ld, observed_filter):
     while True:
+        print (observed_filter)
         if ld.check_fwhm(observed_filter):
             ld.set_filter(observed_filter['name'], observed_filter['filter'],
                           float(observed_filter['wl_min']), float(observed_filter['wl_max']))

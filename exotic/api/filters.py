@@ -24,6 +24,13 @@ __fwhm = {
         "Sloan r": {"name": "SR", "fwhm": ("553.1", "693.1")},
         "Sloan i": {"name": "SI", "fwhm": ("697.5", "827.5")},
         "Sloan z": {"name": "SZ", "fwhm": ("841.2", "978.2")},
+        
+        # Sloan
+        "up": {"name": "up", "fwhm": ("321.8", "386.8")},
+        "gp": {"name": "gp", "fwhm": ("402.5", "551.5")},
+        "rp": {"name": "rp", "fwhm": ("553.1", "693.1")},
+        "ip": {"name": "ip", "fwhm": ("697.5", "827.5")},
+        "zp": {"name": "zp", "fwhm": ("841.2", "978.2")},
 
         # Stromgren
         "Stromgren u": {"name": "STU", "fwhm": ("336.3", "367.7")},
@@ -45,6 +52,7 @@ __fwhm = {
 
         # MObs Clear Filter; Source(s): Martin Fowler
         "MObs CV": {"name": "CV", "fwhm": ("350.0", "850.0")},
+        "w": {"name": "w", "fwhm": ("350.0", "850.0")},
 
         # Astrodon CBB; Source(s): George Silvis; https://astrodon.com/products/astrodon-exo-planet-filter/
         "Astrodon ExoPlanet-BB": {"name": "CBB", "fwhm": ("500.0", "1000.0")},
