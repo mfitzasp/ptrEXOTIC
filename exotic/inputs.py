@@ -93,8 +93,8 @@ class Inputs:
 
         # self.params.update({'exposure': exposure, 'file_units': data_file_units, 'file_time': data_file_time,
         #                     'phot_comp_star': phot_comp_star})
-        self.params.update({'exposure': exposure, 'file_units': data_file_units, 'file_time': data_file_time,
-                            'phot_comp_star': comp_star})
+        self.params.update({'exposure': exposure, 'file_units': data_file_units, 'file_time': data_file_time})#,
+                            #'phot_comp_star': comp_star})
         self.info_dict['prered_file'] = prereduced_file(self.info_dict['prered_file'], prereduced_filename)
 
         if not planet:
@@ -106,6 +106,8 @@ class Inputs:
                                                        self.info_dict['long'])
             else:
                 self.info_dict[key] = self.params[key](self.info_dict[key])
+
+        self.info_dict['phot_comp_star']=comp_star
 
         return self.info_dict, planet
 
