@@ -131,8 +131,8 @@ class Inputs:
         cwd = Path.cwd()
         
         if inits_filename:
-            print ("inits filename is not false")
-            print (inits_filename)
+            # print ("inits filename is not false")
+            # print (inits_filename)
             init_file = Path(inits_filename)
 
         while True:
@@ -570,8 +570,8 @@ def exposure(exp):
 def prereduced_file(file, prereduced_filename):
     
     if prereduced_filename:
-        print ("prereduced_filename is not false")
-        print (prereduced_filename)
+        # print ("prereduced_filename is not false")
+        # print (prereduced_filename)
         file = prereduced_filename    
         
     while True:       
