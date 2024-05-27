@@ -1699,7 +1699,7 @@ def parse_args():
 
 #/home/studio-lab-user/sagemaker-studiolab-notebooks/tristanpsx/outputcats/V1_diffEXOTIC.csv
 
-def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False, prereduced_filename=False, inits_filename=False):
+def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasaexoarch=False, override=False, prereduced_filename=False, inits_filename=False, check_exoarchive_values=True):
     # command line args
     #args = parse_args()
 
@@ -1829,7 +1829,7 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
         # Make a temp directory of helpful files
         Path(Path(exotic_infoDict['save']) / "temp").mkdir(exist_ok=True)
 
-        if not override:
+        if not override and not check_exoarchive_values:
             nea_obj = NASAExoplanetArchive(planet=userpDict['pName'])
             userpDict['pName'], CandidatePlanetBool, pDict = nea_obj.planet_info()
         else:
