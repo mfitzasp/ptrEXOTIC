@@ -559,9 +559,8 @@ def prereduced_file(file, prereduced_filename):
         print ("prereduced_filename is not false")
         print (prereduced_filename)
         file = prereduced_filename    
-    while True:
         
-                
+    while True:       
         
         try:
             if not file:
