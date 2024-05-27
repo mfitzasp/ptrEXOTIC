@@ -1893,7 +1893,7 @@ def main(realtime=False, reduce=False, prereduced=False, photometry=False, nasae
                 if type(userpDict['ra']) and type(userpDict['dec']) is str:
                     userpDict['ra'], userpDict['dec'] = radec_hours_to_degree(userpDict['ra'], userpDict['dec'])
 
-                if not CandidatePlanetBool:
+                if not CandidatePlanetBool and check_exoarchive_values:
                     diff = check_parameters(userpDict, pDict)
                 if diff:
                     pDict = get_planetary_parameters(CandidatePlanetBool, userpDict, pdict=pDict)
